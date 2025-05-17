@@ -1,10 +1,157 @@
-.container {
-  max-width: 500px;
-  aspect-ratio: 1/1;
+@use "./base/reset";
+@use "./base/fonts";
+@use "./base/vars";
+@use "./base/mixins";
 
-  &__box {
-    background-color: deeppink;
-    width: 200px;
-    aspect-ratio: 1/1;
+body {
+  @extend %Inter-400;
+  font-size: 16px;
+  color: vars.$color-text-light;
+}
+
+main {
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 209, 255, 0.4) 0%,
+      transparent 40%
+    ),
+    linear-gradient(135deg, #00b2ff 0%, #3d5dff 48%, #8000ff 100%),
+    linear-gradient(to bottom, transparent 80%, rgba(0, 93, 142, 0.8) 100%);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  position: relative;
+  &__container {
+    margin: 0 auto;
+    padding-inline: vars.$container-padding;
+    width: 100%;
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 10px;
+    align-items: center;
+  }
+  &__nav--list {
+    display: flex;
+    column-gap: 20px;
+  }
+  &__nav-icon {
+    color: vars.$color-text-btn;
+    opacity: 0;
+    user-select: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+  &__nav-toggle {
+    font-size: 14px;
+    color: vars.$color-text-accent;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @include mixins.hover {
+      color: vars.$color-text-btn;
+      .header__nav-icon {
+        opacity: 1;
+      }
+    }
+  }
+  &__nav-icon {
+    opacity: 0;
+    color: vars.$color-text-btn-60;
+  }
+  &__nav-btn {
+    display: none;
+  }
+}
+
+.contact-us {
+  &_container {
+    max-width: vars.$container-width;
+    padding: vars.$container-padding;
+    margin: 0 auto;
+  }
+  &_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0;
+    width: 600px;
+    margin: 0 auto;
+  }
+  &_title {
+    text-align: left;
+    @extend %Questrial-400;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    align-self: baseline;
+  }
+  &_toggle {
+    @extend %Questrial-400;
+    color: vars.$color-text-btn;
+    padding: 20px 0;
+    width: 100%;
+    text-align: center;
+    border-radius: 120px;
+    background: vars.$color-bg-light;
+  }
+}
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 600px;
+  z-index: 1000;
+  border-radius: 48px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  &_container {
+    padding: 40px 40px 60px 40px;
+  }
+  &_btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  &_prev {
+  }
+  &_prev-icon {
+  }
+  &_close {
+  }
+  &_form {
+    
+  }
+  &_title {
+  }
+  &_descr {
+  }
+  &_half-input {
+  }
+  &_select {
+  }
+  &_form-btn {
+  }
+}
+
+.set-modal {
+  &_wrapper {
+  }
+  &_accept {
+  }
+  &_title {
+  }
+  &_desc {
+  }
+  &_btn {
   }
 }

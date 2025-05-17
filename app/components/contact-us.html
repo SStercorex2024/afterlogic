@@ -1,0 +1,72 @@
+<section class="contact-us">
+    <div class="contact-us_container">
+        <div class="contact-us_wrapper">
+            <h2 class="contact-us_title">
+                HELLO FRIEND! <br>
+                LET’S GET STARTED.
+            </h2>
+
+            <button class="contact-us_toggle" type="button" onclick="window.formDialog.showModal()">
+                FILL THE FORM
+            </button>
+        </div>
+
+        <dialog class="modal" id="formDialog">
+            <form class="modal_form" method="post">
+                <div class="modal_container">
+                    <div class="modal_btns">
+                        <button class="modal_prev" aria-label="Close modal" onclick="window.formDialog.close()">
+                            <svg class="modal_prev-icon" width="41" height="16">
+                                <use xlink:href="./img/sprite.svg#arrow-left"></use>
+                            </svg>
+                        </button>
+                        <button class="modal_close" aria-label="Close modal" onclick="window.formDialog.close()">
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+
+                    <h2 class="modal_title">
+                        Some description for this step
+                    </h2>
+                    <p class="modal_descr">
+                        Viverra sagittis arcu tristique nam lectus rhoncus tortor. Suspendisse ut risus nunc et rhoncus
+                        morbi libero. Risus molestie nisi pharetra lorem dui purus. Nunc gravida eget in nunc.
+                    </p>
+                    <input class="modal_input modal_input-half" type="text" required placeholder="Enter some text please">
+                    <input class="modal_input modal_input-half" type="text" required placeholder="Enter some text please">
+                    <input class="modal_input modal_input-half" type="text" required placeholder="Enter some text please">
+                    <input class="modal_input modal_input-half" type="text" required placeholder="Enter some text please">
+                    <select class="modal_select" name="option" id="option" required>
+                        <option value="" disabled selected hidden>Select option</option>
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                    </select>
+                    <input class="modal_input" type="text" required placeholder="Enter some text please">
+                    <button class="modal_form-btn" type="submit"
+                        onclick="window.setModal.showModal(); window.formDialog.close()">
+                        CONFIRM AND SEND
+                    </button>
+                </div>
+            </form>
+        </dialog>
+
+        <dialog class="set-modal" id="setModal">
+            <div class="set-modal_wrapper">
+                <svg class="set-modal_accept" width="20" height="18">
+                    <use xlink:href="./img/sprite.svg#arrow-left"></use>
+                </svg>
+                <h3 class="set-modal_title">
+                    We are all set!
+                </h3>
+                <p class="set-modal_desc">
+                    Your response was successfully send. We will contact you asap.
+                </p>
+                <button class="set-modal_btn" aria-label="Close modal" onclick="window.setModal.close()">
+                    GOT IT!
+                </button>
+            </div>
+        </dialog>
+    </div>
+</section>
