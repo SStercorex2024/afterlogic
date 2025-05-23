@@ -1,22 +1,22 @@
 %Inter-300 {
-  font-family: "Iter-Light", sans-serif;
+  font-family: "Inter-Light", sans-serif;
   font-weight: 300;
 }
 %Inter-400 {
-  font-family: "Iter-Regular", sans-serif;
+  font-family: "Inter-Regular", sans-serif;
   font-weight: 400;
 }
 %InterLightItalic-300 {
-  font-family: "Iter-LightItalic", sans-serif;
+  font-family: "Inter-LightItalic", sans-serif;
   font-weight: 300;
   font-style: italic;
 }
 %Inter-500 {
-  font-family: "Iter-Medium", sans-serif;
+  font-family: "Inter-Medium", sans-serif;
   font-weight: 500;
 }
 %Inter-600 {
-  font-family: "Iter-Semibold", sans-serif;
+  font-family: "Inter-Semibold", sans-serif;
   font-weight: 600;
 }
 %Questrial-400 {
@@ -49,13 +49,15 @@ $color-text-light: #ffffff;
 $color-bg-light: #ffffff;
 $color-bg-light-alt: #f6f6f6;
 $color-text-dark: #000000;
+$color-text-dark-20: rgba(0, 0, 0, 0.2);
 $color-text-accent: #00b2ff;
 $color-text-btn: #005d8e;
 $color-text-btn-60: #005c8e99;
 $color-bg-btn: #d6f5ff;
 $color-border-decor: #3790e2;
 $color-bg-alt: #04132f;
+$color-text-accept: #13450b;
+$color-bg-accept: #c2ffc5;
 $color-bg-submenu: #ceefff;
-$container-padding: 0 10px;
-$container-width-hero: 1267px;
-$container-width: 1220px;
+$container-padding: 0 20px;
+$container-width: 1260px;

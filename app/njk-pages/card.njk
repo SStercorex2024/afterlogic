@@ -1,0 +1,30 @@
+{% for item in items %}
+<div class="card">
+  <picture>
+  {# mobile first #}
+  {% if item.imgMobile %}
+    <source media="(max-width: 640px)" srcset="img/cards/cards-{{ item.imgMobile }}.webp" type="image/webp">
+    <source media="(max-width: 640px)" srcset="img/cards/cards-{{ item.imgMobile }}.jpg" type="image/jpeg">
+  {% endif %}
+  {% if item.imgTablet %}
+    <source media="(max-width: 1064px)" srcset="img/cards/cards-{{ item.imgTablet }}.webp" type="image/webp">
+    <source media="(max-width: 1064px)" srcset="img/cards/cards-{{ item.imgTablet }}.jpg" type="image/jpeg">
+  {% endif %}
+  {# default high quality #}
+   <source srcset="img/cards/cards-{{ item.img }}.avif" type="image/avif">
+   <source srcset="img/cards/cards-{{ item.img }}.webp" type="image/webp">
+  <img class="card__img" src="img/cards/cards-{{ item.img }}.jpg" alt="Alt text" loading="lazy">
+  </picture>
+    <div class="card__text">
+      <h2 class="card__title">
+         {{ item.title }}
+      </h2>
+      <span class="card__numbers">
+          {{ item.numbers }}
+      </span>
+      <p class="card__desc">
+          {{ item.desc }}
+      </p>
+    </div>
+</div>
+{% endfor %}
