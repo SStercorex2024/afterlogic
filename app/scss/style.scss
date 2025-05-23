@@ -19,13 +19,19 @@ main {
     linear-gradient(135deg, #00b2ff 0%, #3d5dff 48%, #8000ff 100%),
     linear-gradient(to bottom, transparent 80%, rgba(0, 93, 142, 0.8) 100%);
 }
-
 .wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-
+.container {
+  margin: 0 auto;
+  max-width: vars.$container-width;
+  padding: vars.$container-padding;
+  @include mixins.max-320 {
+    padding-inline: 10px;
+  }
+}
 .header {
   position: relative;
   &__container {
@@ -55,7 +61,6 @@ main {
     display: flex;
     align-items: center;
     gap: 10px;
-
     @include mixins.hover {
       color: vars.$color-text-btn;
       .header__nav-icon {
@@ -71,7 +76,6 @@ main {
     display: none;
   }
 }
-
 .contact-us {
   &_container {
     max-width: vars.$container-width;
@@ -116,7 +120,6 @@ main {
   width: 600px;
   z-index: 1000;
   border-radius: 48px;
-
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
   transform: translate(-50%, -50%);
   overflow-y: auto;
@@ -147,7 +150,6 @@ main {
     height: 64px;
     transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
     border-radius: 8px;
-
     span {
       position: absolute;
       left: 50%;
@@ -195,7 +197,6 @@ main {
     color: vars.$color-text-dark-20;
     padding: 8px 8px 16px 8px;
     border-bottom: 1px solid vars.$color-text-dark-20;
-
     transition: color 0.3s ease;
     @include mixins.hover {
       color: vars.$color-text-dark;
@@ -206,7 +207,6 @@ main {
         color: vars.$color-text-dark;
       }
     }
-
     &::placeholder {
       color: vars.$color-text-dark-20;
     }
@@ -223,7 +223,6 @@ main {
     background-color: vars.$color-bg-btn;
     width: 100%;
     border-radius: 120px;
-
     transition: background-color 0.3s ease;
     @include mixins.hover {
       background-color: vars.$color-bg-alt;
@@ -233,7 +232,6 @@ main {
     }
   }
 }
-
 .set-modal {
   position: fixed;
   top: 50%;
@@ -241,7 +239,6 @@ main {
   width: 600px;
   z-index: 900;
   border-radius: 48px;
-
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
   transform: translate(-50%, -50%);
   &_wrapper {
@@ -295,5 +292,108 @@ main {
     @include mixins.focus {
       background-color: vars.$color-bg-alt;
     }
+  }
+}
+.about-us {
+  margin-bottom: 60px;
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    @include mixins.max-640 {
+      row-gap: 40px;
+    }
+  }
+  &__content {
+    @include mixins.max-640 {
+      grid-column: span 2;
+    }
+  }
+  &__img {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 4px;
+    @include mixins.max-1064 {
+      width: 241px;
+      height: 542px;
+    }
+    @include mixins.max-640 {
+      width: auto;
+      height: 442px;
+    }
+    @include mixins.max-320 {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+  &__title {
+    margin-bottom: 15px;
+    font-size: 32px;
+  }
+  &__desc {
+    line-height: 1.25;
+    &:first-of-type {
+      margin-bottom: 20px;
+    }
+  }
+  &__desc + .about-us__desc {
+    margin-bottom: 20px;
+  }
+}
+.cards {
+  padding-bottom: 60px;
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    @include mixins.max-1063 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include mixins.max-540 {
+      grid-template-columns: repeat(1, 300px);
+      justify-content: center;
+    }
+  }
+}
+.card {
+  background-color: vars.$color-bg-light;
+  color: vars.$color-text-dark;
+  &:nth-child(3),
+  &:nth-child(4),
+  &:nth-child(5) {
+    @include mixins.min-540 {
+      grid-column: span 2;
+    }
+    .card__img {
+      margin-bottom: 20px;
+    }
+    .card__text {
+      padding: 10px 10px 16px 20px;
+    }
+  }
+  &__img {
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  &__text {
+    word-break: break-word;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    padding: 10px 10px 15px 10px;
+  }
+  &__title {
+    @extend %Inter-500;
+    font-size: 15px;
+    line-height: 100%;
+  }
+  &__numbers {
+    @extend %Inter-600;
+    font-size: 43px;
+  }
+  &__desc {
+    @extend %InterLightItalic-300;
+    line-height: 1.4;
+    font-size: 15px;
   }
 }
