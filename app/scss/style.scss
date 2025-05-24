@@ -45,9 +45,15 @@ main {
     padding: 16px 10px;
     align-items: center;
   }
+  &__logo {
+    border-right: 1px solid vars.$color-border-decor;
+  }
   &__nav--list {
     display: flex;
     column-gap: 20px;
+    @include mixins.max-740 {
+      display: none;
+    }
   }
   &__nav-icon {
     color: vars.$color-text-btn;
@@ -61,6 +67,8 @@ main {
     display: flex;
     align-items: center;
     gap: 10px;
+    line-height: 1.428;
+    letter-spacing: 0.15px;
     @include mixins.hover {
       color: vars.$color-text-btn;
       .header__nav-icon {
@@ -73,7 +81,47 @@ main {
     color: vars.$color-text-btn-60;
   }
   &__nav-btn {
+    position: relative;
     display: none;
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out,
+      opacity 0.3s ease-in-out;
+    border-radius: 8px;
+    touch-action: manipulation;
+    &:active {
+      transform: scale(0.85);
+      opacity: 0.8;
+    }
+    span:nth-child(1) {
+      position: absolute;
+      top: 16px;
+      right: 0;
+      width: 32px;
+      height: 2px;
+      display: block;
+      background-color: black;
+      border-radius: 8px;
+    }
+    span:nth-child(2) {
+      position: absolute;
+      bottom: 16px;
+      right: 0;
+      width: 26px;
+      height: 2px;
+      display: block;
+      background-color: black;
+      border-radius: 8px;
+    }
+    @include mixins.hover {
+      background-color: vars.$color-bg-accept;
+    }
+    @include mixins.focus {
+      background-color: vars.$color-bg-accept;
+    }
+    @include mixins.max-740 {
+      display: inline-block;
+    }
   }
 }
 .contact-us {
@@ -87,7 +135,7 @@ main {
     flex-direction: column;
     align-items: center;
     padding: 60px 0;
-    width: 600px;
+    max-width: 600px;
     margin: 0 auto;
   }
   &_title {
@@ -104,7 +152,8 @@ main {
     width: 100%;
     text-align: center;
     border-radius: 120px;
-    background: vars.$color-bg-light;
+    background-color: vars.$color-bg-light;
+    transition: background-color 0.3s ease-in-out;
     @include mixins.hover {
       background-color: vars.$color-bg-alt;
     }
@@ -198,11 +247,20 @@ main {
     padding: 8px 8px 16px 8px;
     border-bottom: 1px solid vars.$color-text-dark-20;
     transition: color 0.3s ease;
+    @include mixins.max-640 {
+      &:nth-child(1),
+      &:nth-child(4),
+      &:nth-child(3),
+      &:nth-child(2) {
+        grid-column: span 2;
+      }
+    }
     @include mixins.hover {
       color: vars.$color-text-dark;
     }
     @include mixins.focus {
       color: vars.$color-text-dark;
+      border-bottom-color: vars.$color-bg-accent;
       &::placeholder {
         color: vars.$color-text-dark;
       }
@@ -213,6 +271,9 @@ main {
   }
   &_half-input {
     grid-column: 1/2;
+    @include mixins.max-640 {
+      grid-column: span 2 !important;
+    }
   }
   &_input-full {
     grid-column: span 2;
@@ -395,5 +456,115 @@ main {
     @extend %InterLightItalic-300;
     line-height: 1.4;
     font-size: 15px;
+  }
+}
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: vars.$color-bg-alt;
+  &__top {
+  }
+  &__nav {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: left;
+    column-gap: 12px;
+  }
+  &__column {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    @extend %Roboto-700;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+  }
+  &__item {
+    &:first-of-type:not(:last-of-type) {
+      padding-top: 12px;
+      padding-bottom: 8px;
+    }
+  }
+  &__item + .footer__item {
+    padding-bottom: 8px;
+  }
+  &__link {
+    display: inline-block;
+    @extend %Roboto-400;
+    font-size: 14px;
+    line-height: 1.28;
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+    @include mixins.hover {
+      opacity: 0.5;
+    }
+    @include mixins.focus {
+      outline: 2px solid vars.$color-border-decor;
+      outline-offset: 0.125rem;
+      opacity: 0.5;
+    }
+  }
+  &__bottom {
+    padding-top: 48px;
+    margin-inline: 16px;
+  }
+  &__bottom-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    @include mixins.max-640 {
+      column-gap: 40px;
+    }
+  }
+  &__bottom-list {
+    flex-wrap: wrap;
+    display: flex;
+    column-gap: 16px;
+    @include mixins.max-540 {
+      row-gap: 16px;
+    }
+  }
+  &__bottom-item {
+  }
+  &__bottom-link {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: vars.$color-bg-light;
+    transition: opacity 0.3s ease-in-out;
+    @include mixins.hover {
+      opacity: 0.5;
+    }
+    @include mixins.focus {
+      opacity: 0.5;
+    }
+  }
+  &__bottom-captions {
+    display: flex;
+    column-gap: 20px;
+    vertical-align: top;
+    text-wrap: nowrap;
+  }
+  &__bottom-caption {
+  }
+  &__bottom-bottom {
+  }
+  &__bottom-copy {
+    @extend %Roboto-500;
+    font-size: 14px;
+    line-height: 1.642;
+  }
+  &__bottom-desc {
+    @extend %RobotoItalic-400;
+    font-size: 12px;
+    line-height: 1.142;
+    opacity: 0.8;
   }
 }
