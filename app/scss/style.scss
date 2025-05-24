@@ -33,16 +33,22 @@ main {
   }
 }
 .header {
+  .container {
+    @include mixins.max-740 {
+      padding: 0;
+    }
+  }
   position: relative;
   &__container {
     margin: 0 auto;
-    padding-inline: vars.$container-padding;
     width: 100%;
   }
   &__row {
+    padding-inline: vars.$container-padding;
     display: flex;
     justify-content: space-between;
-    padding: 16px 10px;
+    padding-top: 16px;
+    padding-bottom: 16px;
     align-items: center;
   }
   &__logo {
@@ -71,47 +77,37 @@ main {
     letter-spacing: 0.15px;
     @include mixins.hover {
       color: vars.$color-text-btn;
-      .header__nav-icon {
-        opacity: 1;
-      }
     }
   }
   &__nav-icon {
     opacity: 0;
     color: vars.$color-text-btn-60;
   }
-  &__nav-btn {
+  &__nav-burger {
     position: relative;
     display: none;
     width: 40px;
     height: 40px;
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out,
-      opacity 0.3s ease-in-out;
     border-radius: 8px;
     touch-action: manipulation;
-    &:active {
-      transform: scale(0.85);
-      opacity: 0.8;
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%, -50%);
+      height: 2px;
+      display: block;
+      background-color: black;
+      border-radius: 8px;
+      transition: transform 0.3s ease, width 0.3s ease, right 0.3s ease;
     }
     span:nth-child(1) {
-      position: absolute;
-      top: 16px;
-      right: 0;
       width: 32px;
-      height: 2px;
-      display: block;
-      background-color: black;
-      border-radius: 8px;
+      transform: translate(-50%, -4px);
     }
     span:nth-child(2) {
-      position: absolute;
-      bottom: 16px;
-      right: 0;
       width: 26px;
-      height: 2px;
-      display: block;
-      background-color: black;
-      border-radius: 8px;
+      transform: translate(-37%, 3px);
     }
     @include mixins.hover {
       background-color: vars.$color-bg-accept;
@@ -123,7 +119,116 @@ main {
       display: inline-block;
     }
   }
+  &__nav-burger--active {
+    span:nth-child(1),
+    span:nth-child(2) {
+      width: 32px;
+      transform: translate(-50%, -50%);
+    }
+    span:nth-child(1) {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    span:nth-child(2) {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
 }
+.mobile {
+  &__nav {
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+    height: 0;
+  }
+  &__nav--active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: inherit;
+    height: auto;
+  }
+  &__nav--list {
+    background-color: vars.$color-bg-alt-light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__nav-item {
+    padding: 10px;
+    position: relative;
+    align-items: center;
+    column-gap: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  &__nav-icon {
+    transition: opacity 0.3s ease-in-out;
+    color: vars.$color-text-btn;
+  }
+  &__nav-toggle {
+    font-size: 14px;
+    color: vars.$color-text-accent;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.428;
+    letter-spacing: 0.15px;
+    transition: color 0.3s ease-in-out;
+    @include mixins.hover {
+      color: vars.$color-text-btn;
+      + .mobile__nav-icon {
+        opacity: 1;
+      }
+    }
+  }
+  &__nav-icon {
+    opacity: 0;
+  }
+  &__sub-list {
+    transition: transform 0.3s ease-in-out;
+    pointer-events: none;
+    position: absolute;
+    transform: translateY(-100%);
+    left: 0;
+    right: 0;
+    opacity: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: vars.$color-bg-light;
+    display: flex;
+    column-gap: 20px;
+    @include mixins.max-540 {
+      column-gap: 0;
+      .mobile__sub-link {
+        padding: 12px 10px;
+      }
+    }
+  }
+  &__sub-link {
+    display: inline-block;
+    padding: 12px 10px;
+    font-size: 10px;
+    line-height: 2;
+    letter-spacing: 1px;
+    color: vars.$color-text-btn;
+  }
+  &__nav-item--active {
+    margin-bottom: 44px;
+    background-color: vars.$color-bg--active;
+    .mobile__nav-toggle {
+      font-weight: 700;
+    }
+    .mobile__nav-icon {
+      opacity: 1;
+    }
+    .mobile__sub-list {
+      opacity: 1;
+      pointer-events: inherit;
+      transform: translateY(90%);
+    }
+  }
+}
+
 .contact-us {
   &_container {
     max-width: vars.$container-width;
