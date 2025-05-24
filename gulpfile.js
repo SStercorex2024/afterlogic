@@ -143,11 +143,13 @@ function watching() {
   );
 }
 
-function bilding() {
+function building() {
   return src(
     [
       "app/css/style.min.css",
       "app/img/*.*",
+      "app/img/**/*.*",
+      "!app/img/src/**",
       "app/fonts/*.woff2",
       "app/js/main.min.js",
       "app/index.html",
@@ -167,11 +169,11 @@ exports.watching = watching;
 exports.images = images;
 exports.sprites = sprites;
 exports.pages = pages;
-exports.bilding = bilding;
+exports.building = building;
 exports.cleanDist = cleanDist;
 exports.nunjucks = nunjucks;
 
-exports.bild = series(cleanDist, bilding);
+exports.build = series(cleanDist, building);
 exports.default = parallel(
   styles,
   scripts,
