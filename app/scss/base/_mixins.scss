@@ -15,17 +15,6 @@
   &:focus-visible {
     @content;
   }
-  @media (hover: none) {
-    &:focus {
-      @content;
-    }
-  }
-}
-
-@mixin max-1600 {
-  @media screen and (max-width: 1600px) {
-    @content;
-  }
 }
 @mixin max-1280 {
   @media screen and (max-width: 1280px) {
@@ -39,6 +28,11 @@
 }
 @mixin max-1063 {
   @media screen and (max-width: 1063px) {
+    @content;
+  }
+}
+@mixin max-740 {
+  @media screen and (max-width: 740px) {
     @content;
   }
 }
